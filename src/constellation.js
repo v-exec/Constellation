@@ -8,12 +8,14 @@
 	// Only start when canvas is ready
 	document.addEventListener('DOMContentLoaded', function (event) {
 
-		// Parameters 
+		// Params
 		var canvas = document.getElementById('canvas'),
 			ctx = canvas.getContext('2d'),
-			lineDistance = 50,
-			dotnum = 400,
-			interactive = true,
+			lineDistance = 100,
+			dotnum = 160,
+			interactive = false,
+			cursorX,
+			cursorY,
 			points = [dotnum];
 
 
@@ -22,8 +24,8 @@
 
 		// Fit the canvas to its container
 		function fitToContainer() {
-			canvas.style.width = window.innerWidth + 'px';
-			canvas.style.height = window.innerHeight + 'px';
+			canvas.style.width = '100%';
+			canvas.style.height = '100%';
 			canvas.width = canvas.offsetWidth;
 			canvas.height = canvas.offsetHeight;
 		}
@@ -41,13 +43,25 @@
 			}
 		}
 
+		// Get mouse position
+		document.onmousemove = function (e) {
+			cursorX = e.pageX;
+			cursorY = e.pageY;
+		};
+
+
+		// CLASSES ------------------------------------
+
 		// Dot class 
 		function Dot() {
+			//			mouseX = (typeof mouseX !== 'undefined') ? mouseX : 0;
+			//			mouseY = (typeof mouseY !== 'undefined') ? mouseY : 0;
+
 			this.dotY = getRandomFloat(10, canvas.height);
 			this.dotX = getRandomFloat(10, canvas.width);
-			this.dotVY = getRandomFloat(-0.1, 0.1);
-			this.dotVX = getRandomFloat(-0.1, 0.1);
-			this.dotR = getRandomFloat(1, 2.4);
+			this.dotVY = getRandomFloat(-0.2, 0.2);
+			this.dotVX = getRandomFloat(-0.2, 0.2);
+			this.dotR = getRandomFloat(1, 2.6);
 
 			this.drawDot = function () {
 				this.dotX += this.dotVX;
@@ -71,20 +85,33 @@
 		}
 
 		// Line class
-		function Line(lineX, lineY, lineX2, lineY2) {
+		function Line(lineX, lineY, lineX2, lineY2, opacity) {
 			this.lineX = lineX;
 			this.lineY = lineY;
 			this.lineX2 = lineX2;
 			this.lineY2 = lineY2;
+			this.opacity = opacity;
 
 			this.drawLine = function () {
 				ctx.beginPath();
 				ctx.moveTo(lineX, lineY);
 				ctx.lineTo(lineX2, lineY2);
 				ctx.lineWidth = 0.7;
+
+				// TODO: filter opacity with mouse
 				if (interactive) {
-					// TODO: filter opacity with mouse
-					ctx.strokeStyle = "rgba(120, 120, 120, 1)";
+					var midX = (Math.max(lineX, lineX2) - Math.min(lineX, lineX2)),
+						midY = (Math.max(lineY, lineY2) - Math.min(lineY, lineY2)),
+						dist = lineDistance + 40;
+
+					if ((Math.max(midX, cursorX) - Math.min(midX, cursorX) < dist) && (Math.max(midY, cursorY) - Math.min(midY, cursorY) < dist)) {
+						opacity = 0; // ideally map distance to 0.0 -> 1.0;
+					} else {
+						opacity = 1;
+					}
+
+					ctx.strokeStyle = "rgba(120, 120, 120," + opacity + ")";
+
 				} else {
 					ctx.strokeStyle = "rgba(120, 120, 120, 1)";
 				}
@@ -92,8 +119,10 @@
 			};
 		}
 
-		// Fit canvas to container before generating objects that depend on canvas sizing
-		function init() {
+
+		// DISPLAY ----------------------------------------------
+
+		function setup() {
 			var i;
 			fitToContainer();
 
@@ -101,10 +130,12 @@
 				points[i] = new Dot();
 			}
 		}
-		init();
+		setup(); // cute processing names
 
-		function draw() {
-			var i, j, straight;
+		// Start the animation
+		function draw(event) {
+			var i, j, straight,
+				opacity = 0.6;
 
 			fitToContainer();
 
@@ -115,7 +146,8 @@
 			for (i = 0; i < dotnum; i++) {
 				for (j = i + 1; j < (dotnum); j++) {
 					if (distanceVerifier(points[i].dotX, points[i].dotY, points[j].dotX, points[j].dotY)) {
-						straight = new Line(points[i].dotX, points[i].dotY, points[j].dotX, points[j].dotY);
+
+						straight = new Line(points[i].dotX, points[i].dotY, points[j].dotX, points[j].dotY, opacity);
 						straight.drawLine();
 					}
 				}
@@ -128,7 +160,7 @@
 
 			window.requestAnimationFrame(draw);
 		}
-		draw();
+		window.requestAnimationFrame(draw);
 
 	}); // END DOCLoaded
 
