@@ -7,6 +7,10 @@ The current version features a responsive canvas in html, with a set of dot obje
 
 ## Changelog ##
 
+## Version 1.0.3
+
+* Fixed and perfected the mouse hover effect, added an logic to walk the mouse around when not active.
+
 ### Version 1.0.2
 
 * added strict statement && encapsulated the entire code in dom listener event and (func(){}());
@@ -24,6 +28,6 @@ The current version features a responsive canvas in html, with a set of dot obje
 Notes
 ================================================================
 
-Version 1.0.2
+Version 1.0.3
 
-Last updated May 31, 2016
+Last updated October 8th, 2016

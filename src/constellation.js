@@ -13,7 +13,7 @@
 			ctx = canvas.getContext('2d'),
 			lineDistance = 100,
 			dotnum = 160,
-			interactive = false,
+			interactive = true,
 			cursorX,
 			cursorY,
 			points = [dotnum];
@@ -54,8 +54,6 @@
 
 		// Dot class 
 		function Dot() {
-			//			mouseX = (typeof mouseX !== 'undefined') ? mouseX : 0;
-			//			mouseY = (typeof mouseY !== 'undefined') ? mouseY : 0;
 
 			this.dotY = getRandomFloat(10, canvas.height);
 			this.dotX = getRandomFloat(10, canvas.width);
@@ -85,12 +83,13 @@
 		}
 
 		// Line class
-		function Line(lineX, lineY, lineX2, lineY2, opacity) {
+		function Line(lineX, lineY, lineX2, lineY2) {
 			this.lineX = lineX;
 			this.lineY = lineY;
 			this.lineX2 = lineX2;
 			this.lineY2 = lineY2;
-			this.opacity = opacity;
+
+			var opacity = 0.7;
 
 			this.drawLine = function () {
 				ctx.beginPath();
@@ -102,12 +101,12 @@
 				if (interactive) {
 					var midX = (Math.max(lineX, lineX2) - Math.min(lineX, lineX2)),
 						midY = (Math.max(lineY, lineY2) - Math.min(lineY, lineY2)),
-						dist = lineDistance + 40;
+						dist = lineDistance;
 
-					if ((Math.max(midX, cursorX) - Math.min(midX, cursorX) < dist) && (Math.max(midY, cursorY) - Math.min(midY, cursorY) < dist)) {
-						opacity = 0; // ideally map distance to 0.0 -> 1.0;
+					if ((Math.max(lineX, cursorX) - Math.min(lineX, cursorX) < dist) && (Math.max(lineY, cursorY) - Math.min(lineY, cursorY) < dist)) {
+						opacity = 1; // ideally map distance to 0.0 -> 1.0;
 					} else {
-						opacity = 1;
+						opacity = 0;
 					}
 
 					ctx.strokeStyle = "rgba(120, 120, 120," + opacity + ")";
@@ -134,8 +133,7 @@
 
 		// Start the animation
 		function draw(event) {
-			var i, j, straight,
-				opacity = 0.6;
+			var i, j, straight;
 
 			fitToContainer();
 
@@ -146,8 +144,7 @@
 			for (i = 0; i < dotnum; i++) {
 				for (j = i + 1; j < (dotnum); j++) {
 					if (distanceVerifier(points[i].dotX, points[i].dotY, points[j].dotX, points[j].dotY)) {
-
-						straight = new Line(points[i].dotX, points[i].dotY, points[j].dotX, points[j].dotY, opacity);
+						straight = new Line(points[i].dotX, points[i].dotY, points[j].dotX, points[j].dotY);
 						straight.drawLine();
 					}
 				}
@@ -159,6 +156,18 @@
 			}
 
 			window.requestAnimationFrame(draw);
+
+
+
+			// dectect no mouse move
+			setTimeout(function () {
+				var tempX = cursorX,
+					tempY = cursorY;
+				if (cursorX === tempX && cursorY === tempY) {
+					cursorX += Math.floor(getRandomFloat(-0.4, 0.4));
+					cursorY += Math.floor(getRandomFloat(-0.4, 0.4));
+				}
+			}, 100);
 		}
 		window.requestAnimationFrame(draw);
 
