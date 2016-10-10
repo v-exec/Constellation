@@ -3,6 +3,7 @@
 
 <head>
 	<meta charset="utf-8" />
+	<meta name="author" content="Michael Hemingway" />
 	<meta name="description" content="Constellation JS, a stellar canvas experience" />
 	<title>Constellation</title>
 
@@ -35,14 +36,16 @@
 			This feature does not work on your browser.
 		</canvas>
 	</div>
-
-	<!--
-	<script src="src/dev/fun.js"></script>
-	<script src="src/dev/class_dot.js"></script>
-	<script src="src/dev/class_line.js"></script>
-	<script src="src/dev/constellation.js"></script>
--->
 	<script src="src/constellation.js"></script>
+	<script>
+		var wew = new Constellation.setup({
+			canvas: document.getElementById('canvas'),
+			lineDistance: 100,
+			dotnum: 160,
+			interactive: true
+		});
+		Constellation.start();
+	</script>
 </body>
 
 </html>

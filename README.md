@@ -1,11 +1,29 @@
+![stable 1.0.5](https://img.shields.io/badge/stable-1.0.5-brightgreen.svg "Stable!!")
+
 Constellation js
 ================
 
-By Victor Ivanov
+By Michael Hemingway
 
-The current version features a responsive canvas in html, with a set of dot objects that bounce around in said canvas with random spawn parameters, and once in proximity to one another, these dots are connected by lines objects.
+Orignal design by Victor Ivanov
+
+The current version features a responsive canvas in html, with a set of dot objects that bounce around in said canvas with constrollable spawn parameters, and once in proximity to one another, these dots are connected by lines objects.
 
 ## Changelog ##
+
+## Version 1.0.5
+
+* Made it into a neat little module! _Now with 100% more options._
+
+```javascript
+var wew = new Constellation.setup({
+  canvas: document.getElementById('canvas'),
+  lineDistance: 100,
+  dotnum: 160,
+  interactive: true
+});
+Constellation.start();
+```
 
 ## Version 1.0.3
 
@@ -13,7 +31,7 @@ The current version features a responsive canvas in html, with a set of dot obje
 
 ### Version 1.0.2
 
-* added strict statement && encapsulated the entire code in dom listener event and (func(){}());
+* added strict statement && encapsulated the entire code in dom listener event and closure.
 * Fixed fitToContainer(); method from earlier implementation which needlesly took a canvas argument.
 
 
@@ -28,6 +46,6 @@ The current version features a responsive canvas in html, with a set of dot obje
 Notes
 ================================================================
 
-Version 1.0.3
+Version 1.0.5
 
-Last updated October 8th, 2016
+Last updated October 9th, 2016
