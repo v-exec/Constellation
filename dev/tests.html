@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Module Test</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" integrity="sha256-ECB9bbROLGm8wOoEbHcHRxlHgzGqYpDtNTgDTyDz0wg=" crossorigin="anonymous" />
+
+</head>
+
+<body>
+	<h2>Module Test</h2>
+
+	<table style="width:100%">
+		<tr>
+			<th>Obj</th>
+			<td id="object">0</td>
+			<td>/</td>
+		</tr>
+		<tr>
+			<th>Line Distance</th>
+			<td id="lineDist">0</td>
+			<td>/</td>
+		</tr>
+		<tr>
+			<th>Canvas</th>
+			<td id="canvasp">0</td>
+			<td>/</td>
+		</tr>
+		<tr>
+			<th>Dotnum</th>
+			<td id="dotnum">0</td>
+			<td>/</td>
+		</tr>
+		<tr>
+			<th>interactive</th>
+			<td id="interactive">0</td>
+			<td>/</td>
+		</tr>
+	</table>
+
+	<canvas id="canvas" height="0px">0</canvas>
+	<form>
+		<input TYPE="button" onClick="history.go(0)" VALUE="Refresh">
+	</form>
+	<script>
+		var Constellation = (function () {
+			'use strict';
+
+			var settings = {
+					canvas: document.getElementById('canvas'),
+					lineDistance: 100,
+					dotnum: 160,
+					interactive: true
+				},
+
+				cursorX,
+				cursorY;
+
+			var c = function (options) {
+
+				options = options || {};
+				for (var option in settings) {
+					if (settings.hasOwnProperty(option) && !options.hasOwnProperty(option)) {
+						options[option] = settings[option];
+					}
+				}
+
+				// updates global scope
+				settings = options;
+			};
+
+			function run() {
+				document.getElementById('object').innerHTML = typeof eldoot === 'object' ? "pass" : "fail";
+				document.getElementById('canvasp').innerHTML = settings.canvas.getContext('2d');
+				document.getElementById('lineDist').innerHTML = settings.lineDistance;
+				document.getElementById('dotnum').innerHTML = settings.dotnum;
+				document.getElementById('interactive').innerHTML = settings.interactive;
+				document.querySelector('h2').style.color = 'darkgreen';
+			}
+
+			return {
+				setup: c,
+				run: run
+			};
+		}());
+
+		var eldoot = new Constellation.setup({
+			doot: 42,
+			canvas: document.getElementById('canvas'),
+			lineDistance: 10,
+			dotnum: 666,
+			interactive: false
+		});
+		Constellation.run();
+	</script>
+</body>
+
+</html>

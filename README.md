@@ -5,6 +5,8 @@ Constellation js
 
 By Michael Hemingway
 
+![constellation demo](http://live.arthem.co/constellation.gif "constellation js")
+
 Orignal design by Victor Ivanov
 
 The current version features a responsive canvas in html, with a set of dot objects that bounce around in said canvas with constrollable spawn parameters, and once in proximity to one another, these dots are connected by lines objects.
