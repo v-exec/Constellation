@@ -1,26 +1,51 @@
-<!--
-Victor Ivanov - Constellation, final version.
-
-The current version features a responsive canvas in html, with a set of dot objects that bounce around in said canvas with random spawn parameters, and once in proximity to one another, these dots are connected by lines objects.
--->
-<html>
+<!doctype html>
+<html lang="en">
 
 <head>
-	<link rel="stylesheet" href="styles/main.css">
+	<meta charset="utf-8" />
+	<meta name="author" content="Michael Hemingway" />
+	<meta name="description" content="Constellation JS, a stellar canvas experience" />
 	<title>Constellation</title>
+
+	<style>
+		* {
+			margin: 0;
+		}
+		
+		body {
+			overflow: hidden;
+			background: #1a1a1a;
+		}
+		
+		#canvasSize {
+			display: block;
+			position: relative;
+			width: 100%;
+			height: 100vh;
+		}
+		
+		#canvas {
+			border: 1px solid #fff;
+		}
+	</style>
 </head>
 
 <body>
 	<div id="canvasSize">
-		<canvas id="myCanvas" width="100" height="100">
+		<canvas id="canvas" width="100" height="100">
 			This feature does not work on your browser.
 		</canvas>
 	</div>
-
-	<script src="scripts/fun.js"></script>
-	<script src="scripts/class_dot.js"></script>
-	<script src="scripts/class_line.js"></script>
-	<script src="scripts/constellation.js"></script>
+	<script src="src/constellation.js"></script>
+	<script>
+		var wew = new Constellation.setup({
+			canvas: document.getElementById('canvas'),
+			lineDistance: 30,
+			dotnum: 360,
+			interactive: true
+		});
+		Constellation.start();
+	</script>
 </body>
 
 </html>
