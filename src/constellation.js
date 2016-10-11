@@ -13,8 +13,8 @@ var Constellation = (function () {
 			dotnum: 160,
 			interactive: true
 		},
-		ctx = settings.canvas.getContext('2d'),
-		points = [settings.dotnum],
+		ctx,
+		points,
 		cursorX,
 		cursorY;
 
@@ -30,6 +30,9 @@ var Constellation = (function () {
 
 		// updates global scope
 		settings = options;
+		// fix dependent variables
+		ctx = settings.canvas.getContext('2d');
+		points = [settings.dotnum];
 	}
 
 
