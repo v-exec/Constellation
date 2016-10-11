@@ -11,11 +11,7 @@ Orignal design by Victor Ivanov
 
 The current version features a responsive canvas in html, with a set of dot objects that bounce around in said canvas with constrollable spawn parameters, and once in proximity to one another, these dots are connected by lines objects.
 
-## Changelog ##
-
-## Version 1.0.5
-
-* Made it into a neat little module! _Now with 100% more options._
+#### Usage
 
 ```javascript
 var wew = new Constellation.setup({
@@ -27,7 +23,14 @@ var wew = new Constellation.setup({
 Constellation.start();
 ```
 
-## Version 1.0.3
+Changelog
+================================================================
+
+### Version 1.0.5
+
+* Made it into a neat little module! _Now with 100% more options._
+
+### Version 1.0.3
 
 * Fixed and perfected the mouse hover effect, added an logic to walk the mouse around when not active.
 
@@ -46,8 +49,8 @@ Constellation.start();
 
 
 Notes
-================================================================
+-------------------------------------------------
 
 Version 1.0.5
 
-Last updated October 9th, 2016
+Last updated October 10th, 2016
