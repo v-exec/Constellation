@@ -7,11 +7,14 @@ By Michael Hemingway
 
 ![constellation demo](http://live.arthem.co/constellation.gif "constellation js")
 
-Orignal design by Victor Ivanov
+Orignal design & legwork by [Victor Ivanov](https://github.com/Vi-Victor/).
 
-The current version features a responsive canvas in html, with a set of dot objects that bounce around in said canvas with constrollable spawn parameters, and once in proximity to one another, these dots are connected by lines objects.
+Constellation.js features a responsive canvas in html, with a set of dot objects that bounce around with constrollable spawn parameters, and once in proximity to one another, these dots are connected by lines objects. 
+[LIVE DEMO](http://live.arthem.co/demos/constellation.html).
 
-#### Usage
+### Usage
+
+Load `constellation.min.js` in your document and initialize constellation to your canvas.
 
 ```javascript
 var wew = new Constellation.setup({
@@ -22,6 +25,8 @@ var wew = new Constellation.setup({
 });
 Constellation.start();
 ```
+The plugin will automatically size the canvas to it's parent size.
+
 
 Changelog
 ================================================================
@@ -41,7 +46,6 @@ Changelog
 
 
 ## TODO ##
-
 
 * Refactor for modularity & add window resize detect that changes number of dots.
 * Make Out-of-Bounds dots (after resize) return to bounds. 
