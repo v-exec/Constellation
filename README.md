@@ -3,7 +3,7 @@
 Constellation js
 ================
 
-Original design and development by [Victor Ivanov](https://github.com/Vi-Victor), with additional functionality and documentation by [Michael Hemingway](https://github.com/MichaelHemingway)
+Original design and development by [Victor Ivanov](https://github.com/Vi-Victor), with additional functionality and documentation by [Michael Hemingway](https://github.com/MichaelHemingway).
 
 ![constellation demo](http://live.arthem.co/constellation.gif "constellation js")
 
