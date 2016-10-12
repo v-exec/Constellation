@@ -3,11 +3,9 @@
 Constellation js
 ================
 
-By Michael Hemingway
+Original design and development by ![Victor Ivanov](https://github.com/Vi-Victor), with additional functionality and documentation by ![Michael Hemingway](https://github.com/MichaelHemingway)
 
 ![constellation demo](http://live.arthem.co/constellation.gif "constellation js")
-
-Orignal design & legwork by [Victor Ivanov](https://github.com/Vi-Victor/).
 
 Constellation.js features a responsive canvas in html, with a set of dot objects that bounce around with constrollable spawn parameters, and once in proximity to one another, these dots are connected by lines objects. 
 [LIVE DEMO](http://live.arthem.co/demos/constellation.html).
@@ -27,7 +25,6 @@ Constellation.start();
 ```
 The plugin will automatically size the canvas to it's parent size.
 
-
 Changelog
 ================================================================
 
@@ -37,20 +34,12 @@ Changelog
 
 ### Version 1.0.3
 
-* Fixed and perfected the mouse hover effect, added an logic to walk the mouse around when not active.
+* Fixed and perfected the mouse hover effect, added in logic to walk the mouse around when not active.
 
 ### Version 1.0.2
 
-* added strict statement && encapsulated the entire code in dom listener event and closure.
+* Added strict statement & encapsulated the entire code in dom listener event and closure.
 * Fixed fitToContainer(); method from earlier implementation which needlesly took a canvas argument.
-
-
-## TODO ##
-
-* Refactor for modularity & add window resize detect that changes number of dots.
-* Make Out-of-Bounds dots (after resize) return to bounds. 
-
-
 
 Notes
 -------------------------------------------------
