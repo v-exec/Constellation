@@ -15,7 +15,7 @@ Constellation.js features a responsive canvas in html, with a set of dot objects
 Load `constellation.min.js` in your document and initialize constellation to your canvas.
 
 ```javascript
-var wew = new Constellation.setup({
+Constellation.setup({
   canvas: document.getElementById('canvas'),
   lineDistance: 100,
   dotnum: 160,
