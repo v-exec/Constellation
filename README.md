@@ -40,4 +40,5 @@ The canvas will be automatically sized to its parent size.
 ## Notes
 
 Version 1.0.5
+
 Last updated October 10th, 2016
