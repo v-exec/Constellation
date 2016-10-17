@@ -19,9 +19,9 @@
 		
 		#canvasSize {
 			display: block;
-			position: relative;
+			position: absolute;
 			width: 100%;
-			height: 100vh;
+			height: 100%;
 		}
 		
 		#canvas {
@@ -38,11 +38,13 @@
 	</div>
 	<script src="src/constellation.js"></script>
 	<script>
-		var wew = new Constellation.setup({
+		Constellation.setup({
 			canvas: document.getElementById('canvas'),
-			lineDistance: 30,
+			lineDistance: 90,
 			dotnum: 360,
-			interactive: true
+			interactive: true,
+			strokeColor: 'rgb(120, 20, 150)',
+			dotColor: 'rgb(220, 80, 97)'
 		});
 		Constellation.start();
 	</script>

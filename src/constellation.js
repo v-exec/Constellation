@@ -1,4 +1,4 @@
-/* Constellation.js | v1.0.5 - stable
+/* Constellation.js | v1.0.6 - stable
  * 
  * Original design by Victor Ivanov
  * (MIT) Michael Hemingway @ Arthem. Mtl
@@ -7,18 +7,24 @@
 var Constellation = (function () {
 	'use strict';
 
+	// these are the constellation defaults.
 	var settings = {
 			canvas: document.getElementById('canvas'),
 			lineDistance: 100,
 			dotnum: 160,
-			interactive: true
+			interactive: true,
+			strokeColor: 'rgb(120,120,120)',
+			dotColor: 'rgb(220,220,220)'
 		},
-		ctx,
+		ctx, // canvas context
+		dpr, // device pixel ratio
+		bsr, // backing store ratio 
 		points,
+		pixelRatio,
 		cursorX,
 		cursorY;
 
-	// update settings based on init {}
+	// update settings with object passed by end user.
 	function setup(options) {
 		var option;
 		options = options || {};
@@ -33,6 +39,15 @@ var Constellation = (function () {
 		// fix dependent variables
 		ctx = settings.canvas.getContext('2d');
 		points = [settings.dotnum];
+		dpr = window.devicePixelRatio || 1;
+		bsr = ctx.webkitBackingStorePixelRatio ||
+			ctx.mozBackingStorePixelRatio ||
+			ctx.msBackingStorePixelRatio ||
+			ctx.oBackingStorePixelRatio ||
+			ctx.backingStorePixelRatio || 1;
+		pixelRatio = dpr / bsr;
+		settings.canvas.width = settings.canvas.parentElement.clientWidth;
+		settings.canvas.height = settings.canvas.parentElement.clientHeight;
 	}
 
 
@@ -41,12 +56,21 @@ var Constellation = (function () {
 
 	// _HELPERS ---------------------
 
+	// returns "rgba(x,y,z," to be integrated with variable opacity
+	function rgbaConverter(color) {
+		color = color.replace(/[^\d,]/g, '').split(',');
+		// so to be completed with 
+		return 'rgba(' + color[0] + ',' + color[1] + ',' + color[2] + ',';
+	}
+
 	// Fit the canvas to its container
 	function fitToContainer() {
-		settings.canvas.style.width = '100%';
-		settings.canvas.style.height = '100%';
-		settings.canvas.width = settings.canvas.offsetWidth;
-		settings.canvas.height = settings.canvas.offsetHeight;
+		var ratio = pixelRatio;
+		settings.canvas.style.width = settings.canvas.parentElement.clientWidth * ratio;
+		settings.canvas.style.height = settings.canvas.parentElement.clientHeight * ratio;
+		settings.canvas.width = settings.canvas.parentElement.clientWidth * ratio;
+		settings.canvas.height = settings.canvas.parentElement.clientHeight * ratio;
+		//ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
 	}
 
 	// Random float generator
@@ -86,7 +110,7 @@ var Constellation = (function () {
 			ctx.beginPath();
 			ctx.arc(this.dotX, this.dotY, this.dotR, 0, Math.PI * 2, true);
 			ctx.closePath();
-			ctx.fillStyle = "rgba(220,220,220,1)";
+			ctx.fillStyle = rgbaConverter(settings.dotColor) + '1)';
 			ctx.fill();
 		};
 	}
@@ -98,7 +122,8 @@ var Constellation = (function () {
 		this.lineX2 = lineX2;
 		this.lineY2 = lineY2;
 
-		var opacity = 0.7;
+		var opacity = 0.7,
+			sc = rgbaConverter(settings.strokeColor);
 
 		this.drawLine = function () {
 			ctx.beginPath();
@@ -118,10 +143,10 @@ var Constellation = (function () {
 					opacity = 0;
 				}
 
-				ctx.strokeStyle = "rgba(120, 120, 120," + opacity + ")";
+				ctx.strokeStyle = sc + opacity + ")";
 
 			} else {
-				ctx.strokeStyle = "rgba(120, 120, 120, 1)";
+				ctx.strokeStyle = sc + '1)';
 			}
 			ctx.stroke();
 		};
@@ -180,8 +205,8 @@ var Constellation = (function () {
 				var tempX = cursorX,
 					tempY = cursorY;
 				if (cursorX === tempX && cursorY === tempY) {
-					cursorX += Math.floor(getRandomFloat(-0.2, 0.4));
-					cursorY += Math.floor(getRandomFloat(-0.2, 0.4));
+					cursorX += Math.floor(getRandomFloat(-0.20, 0.20));
+					cursorY += Math.floor(getRandomFloat(-0.20, 0.20));
 				}
 			}, 100);
 		}

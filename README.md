@@ -9,7 +9,8 @@ By Michael Hemingway
 
 Orignal design & legwork by [Victor Ivanov](https://github.com/Vi-Victor/).
 
-Constellation.js features a responsive canvas in html, with a set of dot objects that bounce around with constrollable spawn parameters, and once in proximity to one another, these dots are connected by lines objects. 
+Constellation.js features a responsive canvas in html, with a set of dot objects that bounce around with constrollable spawn parameters, and once in proximity to one another, these dots are connected by lines objects.
+
 [LIVE DEMO](http://live.arthem.co/demos/constellation.html).
 
 ### Usage
@@ -17,11 +18,13 @@ Constellation.js features a responsive canvas in html, with a set of dot objects
 Load `constellation.min.js` in your document and initialize constellation to your canvas.
 
 ```javascript
-var wew = new Constellation.setup({
+Constellation.setup({
   canvas: document.getElementById('canvas'),
   lineDistance: 100,
   dotnum: 160,
-  interactive: true
+  interactive: true,
+	strokeColor: 'rgb(120,120,120)',
+	dotColor: 'rgb(220,220,220)'
 });
 Constellation.start();
 ```
@@ -30,6 +33,12 @@ The plugin will automatically size the canvas to it's parent size.
 
 Changelog
 ================================================================
+
+## Version 1.0.6
+
+* Corrected misleading documentation. Thanks [@Ragekit](https://github.com/ragekit)!
+* Added colors! One can now pass `dotColor` and `strokeColor` as parameters in rgb. Documentation has been updated to reflect this change.
+* **This version does not work on mobile.**
 
 ### Version 1.0.5
 
