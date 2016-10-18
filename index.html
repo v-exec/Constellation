@@ -19,13 +19,9 @@
 		
 		#canvasSize {
 			display: block;
-			position: relative;
+			position: absolute;
 			width: 100%;
-			height: 100vh;
-		}
-		
-		#canvas {
-			border: 1px solid #fff;
+			height: 100%;
 		}
 	</style>
 </head>
@@ -40,7 +36,7 @@
 	<script>
 		Constellation.setup({
 			canvas: document.getElementById('canvas'),
-			lineDistance: 30,
+			lineDistance: 90,
 			dotnum: 360,
 			interactive: true
 		});
