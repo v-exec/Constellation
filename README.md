@@ -11,6 +11,7 @@ Nearly all elements of the graphic are parameterized, and easily modifiable.
 
 1. Find `constellationpack.js` in `/module`, and link it in your html.
 2. To edit its parameters, add the `<script>` tag found below in your html to overwrite their default values.
+
 Feel free to exclude any parameters whose value you do not wish to modify.
 
 ```javascript
