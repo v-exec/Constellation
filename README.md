@@ -11,7 +11,7 @@ Nearly all elements of the graphic are parameterized, and easily modifiable.
 
 Find `constellationpack.js` in `/module`, and link it in your html.
 To edit its parameters, add the following `<script>` tag in your html to overwrite their default values.
-Below are all of the default parameter values. Feel free to exclude any parameters whose value you do not wish to modify.
+Feel free to exclude any parameters whose value you do not wish to modify.
 
 ```javascript
 <script>
@@ -77,6 +77,7 @@ Below are all of the default parameter values. Feel free to exclude any paramete
 </script>
 ```
 The canvas will be automatically sized to its parent's size.
+If you wish to modify the scripts themselves, take a look at the `/scripts` folder.
 
 ## Changelog
 
