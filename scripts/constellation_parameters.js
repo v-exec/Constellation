@@ -1,5 +1,9 @@
 //-------------GENERAL-------------//
 
+//creates reference to html canvas
+//put your canvas' ID where 'userCanvas' is
+var canvas = document.getElementById('userCanvas');
+
 //number of dots
 var dotCount = 300;
 
@@ -39,8 +43,11 @@ var lineBlue = 200;
 //line opacity is automatically overwritten if interactive = true
 var lineOpacity = 0.7;
 
-//HEX for canvas background color
-var backgroundColor = "#fff";
+//RGBA canvas background (takes values between 0 and 255 for RGB, and between 0 and 1 for alpha)
+var bgRed = 255;
+var bgGreen = 255;
+var bgBlue = 255;
+var bgOpacity = 1;
 
 //-------------SIZES-------------//
 

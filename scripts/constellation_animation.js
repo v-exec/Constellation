@@ -1,5 +1,4 @@
 //references to html elements
-var canvas = document.getElementById('userCanvas');
 var ctx = canvas.getContext('2d');
 
 //global variables for cursor location
@@ -14,7 +13,7 @@ var lineRGB = "rgba(" + lineRed + ", " + lineGreen + ", " + lineBlue + ", " + li
 var dotRGB = "rgba(" + dotRed + ", " + dotGreen + ", " + dotBlue + ", " + dotOpacity + ")";
 
 //set canvas background color
-document.getElementById("userCanvas").style.background = backgroundColor;
+canvas.style.background = "rgba(" + bgRed + ", " + bgGreen + ", " + bgBlue + ", " + bgOpacity + ")";;
 
 //animation setup
 function setup() {

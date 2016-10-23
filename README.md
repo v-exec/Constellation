@@ -1,5 +1,5 @@
 # Constellation-JS
-#### Version 1.1
+#### Version 1.1.1
 
 _Constellation-JS_ is a dynamic, interactive visual 'mesh' graphic done purely in JavaScript.
 
@@ -9,14 +9,18 @@ Nearly all elements of the graphic are parameterized, and easily modifiable.
 
 ## Installation
 
-Find `constellationpack.js` in `/module`, and link it in your html.
-To edit its parameters, add the following `<script>` tag in your html to overwrite their default values.
+1. Find `constellationpack.js` in `/module`, and link it in your html.
+2. To edit its parameters, add the `<script>` tag found below in your html to overwrite their default values.
 Feel free to exclude any parameters whose value you do not wish to modify.
 
 ```javascript
 <script>
 	//-------------GENERAL-------------//
 
+	//creates reference to html canvas
+	//put your canvas' ID where 'userCanvas' is
+	canvas = document.getElementById('userCanvas');
+	
 	//number of dots
 	dotCount = 300;
 
@@ -56,8 +60,11 @@ Feel free to exclude any parameters whose value you do not wish to modify.
 	//line opacity is automatically overwritten if interactive = true
 	lineOpacity = 0.7;
 
-	//HEX for canvas background color
-	backgroundColor = "#fff";
+	//RGBA canvas background (takes values between 0 and 255 for RGB, and between 0 and 1 for alpha)
+	bgRed = 255;
+	bgGreen = 255;
+	bgBlue = 255;
+	bgOpacity = 1;
 
 	//-------------SIZES-------------//
 
@@ -80,6 +87,13 @@ The canvas will be automatically sized to its parent's size.
 If you wish to modify the scripts themselves, take a look at the `/scripts` folder.
 
 ## Changelog
+
+### Version 1.1.1
+
+* Changed canvas background color parameters to accept RGB
+* Added parameter for setting on which canvas constellation displays on
+* Added documentation
+* Added a non-minified version of the module in `/module` folder
 
 ### Version 1.1
 
