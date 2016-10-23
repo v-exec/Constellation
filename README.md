@@ -95,9 +95,9 @@ If you wish to modify the scripts themselves, take a look at the `/scripts` fold
 * Fixed incorrect coordinate calculations for line opacity falloff
 * Optimized line opacity falloff calculation logic
 * Added parameters for the following:
-	* dot and line colors
+	* dot and line colors and opacity
 	* dot and line sizes
-	* line opacity falloff range and opacity
+	* line opacity falloff range and intensity
 	* dot movement speed
 	* canvas background color
 
