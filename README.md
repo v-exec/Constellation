@@ -103,4 +103,4 @@ The canvas will be automatically sized to its parent's size.
 ## To Do
 
 * Make live demo page
-* Make ConstellationJS into a class, so that multiple instances can be deployed on multiple canvases. (maaaaaybe)
+* Make ConstellationJS into a class, so that multiple instances can be deployed on multiple canvases (maaaaaybe)
