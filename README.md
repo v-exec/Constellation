@@ -85,6 +85,7 @@ Feel free to exclude any parameters whose value you do not wish to modify.
 </script>
 ```
 The canvas will be automatically sized to its parent's size.
+
 If you wish to modify the scripts themselves, take a look at the `/scripts` folder.
 
 ## Changelog
