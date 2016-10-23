@@ -37,7 +37,7 @@ Feel free to exclude any parameters whose value you do not wish to modify.
 	opacityFalloff = true;
 
 	//amount of opacity falloff (the higher the number, the less opaque things will be when further from the mouse)
-	//should be bigger or equal to 2x mouseFalloff, otherwise it yelds opacity value out of 0-1 range
+	//should be bigger or equal to 2x mouseFalloff, otherwise it yields an opacity value out of 0-1 range
 	falloffAmount = mouseFalloff * 2;
 
 	//-------------COLORS-------------//
