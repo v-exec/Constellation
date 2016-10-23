@@ -2,7 +2,7 @@
 var canvas = document.getElementById('userCanvas');
 var ctx = canvas.getContext('2d');
 
-//global cursor locations
+//global variables for cursor location
 var cursorX;
 var cursorY;
 
