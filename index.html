@@ -1,25 +1,17 @@
 <!doctype html>
-<html lang="en">
+<html>
 
 <head>
-	<meta charset="utf-8" />
-	<meta name="author" content="Michael Hemingway" />
-	<meta name="description" content="Constellation JS, a stellar canvas experience" />
-	<title>Constellation</title>
+	<title>constellation</title>
 
 	<style>
-		* {
+		body {
 			margin: 0;
 		}
 		
-		body {
-			overflow: hidden;
-			background: #1a1a1a;
-		}
-		
-		#canvasSize {
-			display: block;
+		#canvasContainer {
 			position: absolute;
+			overflow: hidden;
 			width: 100%;
 			height: 100%;
 		}
@@ -27,21 +19,16 @@
 </head>
 
 <body>
-	<div id="canvasSize">
-		<canvas id="canvas" width="100" height="100">
+	<div id="canvasContainer">
+		<canvas id="userCanvas" width="100" height="100">
 			This feature does not work on your browser.
 		</canvas>
 	</div>
-	<script src="src/constellation.js"></script>
-	<script>
-		Constellation.setup({
-			canvas: document.getElementById('canvas'),
-			lineDistance: 90,
-			dotnum: 360,
-			interactive: true
-		});
-		Constellation.start();
-	</script>
+
+	<script src="scripts/constellation_parameters.js"></script>
+	<script src="scripts/constellation_functions.js"></script>
+	<script src="scripts/constellation_classes.js"></script>
+	<script src="scripts/constellation_animation.js"></script>
 </body>
 
 </html>
