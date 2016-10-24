@@ -64,6 +64,9 @@ var lineSize = 0.7;
 
 //-------------SPEEDS-------------//
 
+//speed range of dots
+var dotSpeed = 0.2;
+
 //////////////////////////////////////////// GLOBALS / SETUP
 
 //references to html elements
@@ -85,25 +88,22 @@ canvas.style.background = "rgba(" + bgRed + ", " + bgGreen + ", " + bgBlue + ", 
 
 //////////////////////////////////////////// FUNCTIONS
 
-//speed range of dots
-var dotSpeed = 0.2;
-
 //fit canvas to its container
 function fitToContainer() {
-	canvas.style.width = '100%';
-	canvas.style.height = '100%';
-	canvas.width = canvas.offsetWidth;
-	canvas.height = canvas.offsetHeight;
+    canvas.style.width = '100%';
+    canvas.style.height = '100%';
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
 }
 
 //random float generator
 function getRandomFloat(min, max) {
-	return Math.random() * (max - min) + min;
+    return Math.random() * (max - min) + min;
 }
 
 //check if distance between two coordinates is closer than distanceComparator
 function distanceVerifier(dot1X, dot1Y, dot2X, dot2Y, distanceComparator) {
-	return ((Math.abs(dot1X - dot2X) < distanceComparator) && (Math.abs(dot1Y - dot2Y) < distanceComparator));
+    return ((Math.abs(dot1X - dot2X) < distanceComparator) && (Math.abs(dot1Y - dot2Y) < distanceComparator));
 }
 
 //////////////////////////////////////////// CLASSES
@@ -111,76 +111,76 @@ function distanceVerifier(dot1X, dot1Y, dot2X, dot2Y, distanceComparator) {
 //dot class
 function Dot() {
 
-	this.dotX = getRandomFloat(1, canvas.width);
-	this.dotY = getRandomFloat(1, canvas.height);
-	this.dotVX = getRandomFloat(-dotSpeed, dotSpeed);
-	this.dotVY = getRandomFloat(-dotSpeed, dotSpeed);
-	this.dotR = getRandomFloat(dotSizeMin, dotSizeMax);
+    this.dotX = getRandomFloat(1, canvas.width);
+    this.dotY = getRandomFloat(1, canvas.height);
+    this.dotVX = getRandomFloat(-dotSpeed, dotSpeed);
+    this.dotVY = getRandomFloat(-dotSpeed, dotSpeed);
+    this.dotR = getRandomFloat(dotSizeMin, dotSizeMax);
 
-	//method to update dot position
-	this.moveDot = function () {
-		this.dotX += this.dotVX;
-		this.dotY += this.dotVY;
+    //method to update dot position
+    this.moveDot = function () {
+        this.dotX += this.dotVX;
+        this.dotY += this.dotVY;
 
-		//check collisions
-		if (this.dotX + this.dotVX > canvas.width || this.dotX + this.dotVX < 0) {
-			this.dotVX = -this.dotVX;
-		}
+        //check collisions
+        if (this.dotX + this.dotVX > canvas.width || this.dotX + this.dotVX < 0) {
+            this.dotVX = -this.dotVX;
+        }
 
-		if (this.dotY + this.dotVY > canvas.height || this.dotY + this.dotVY < 0) {
-			this.dotVY = -this.dotVY;
-		}
-	}
+        if (this.dotY + this.dotVY > canvas.height || this.dotY + this.dotVY < 0) {
+            this.dotVY = -this.dotVY;
+        }
+    }
 
-	//method to draw dot
-	this.drawDot = function () {
-		ctx.beginPath();
-		ctx.arc(this.dotX, this.dotY, this.dotR, 0, Math.PI * 2, true);
-		ctx.closePath();
-		ctx.fillStyle = dotRGB;
-		ctx.fill();
-	}
+    //method to draw dot
+    this.drawDot = function () {
+        ctx.beginPath();
+        ctx.arc(this.dotX, this.dotY, this.dotR, 0, Math.PI * 2, true);
+        ctx.closePath();
+        ctx.fillStyle = dotRGB;
+        ctx.fill();
+    }
 }
 
 //line class
 function Line(lineX1, lineY1, lineX2, lineY2) {
 
-	this.lineX1 = lineX1;
-	this.lineY1 = lineY1;
-	this.lineX2 = lineX2;
-	this.lineY2 = lineY2;
+    this.lineX1 = lineX1;
+    this.lineY1 = lineY1;
+    this.lineX2 = lineX2;
+    this.lineY2 = lineY2;
 
-	//method to calculate line position and draw line
-	this.drawLine = function () {
-		ctx.beginPath();
-		ctx.moveTo(this.lineX1, this.lineY1);
-		ctx.lineTo(this.lineX2, this.lineY2);
-		ctx.lineWidth = lineSize;
+    //method to calculate line position and draw line
+    this.drawLine = function () {
+        ctx.beginPath();
+        ctx.moveTo(this.lineX1, this.lineY1);
+        ctx.lineTo(this.lineX2, this.lineY2);
+        ctx.lineWidth = lineSize;
 
-		//if interactive is on, make line opacity visible only if lines are in range of mouse
-		if (interactive) {
+        //if interactive is on, make line opacity visible only if lines are in range of mouse
+        if (interactive) {
 
-			//calculate midpoint of line
-			var midX = (this.lineX1 + this.lineX2) / 2;
-			var midY = (this.lineY1 + this.lineY2) / 2;
+            //calculate midpoint of line
+            var midX = (this.lineX1 + this.lineX2) / 2;
+            var midY = (this.lineY1 + this.lineY2) / 2;
 
-			lineOpacity = 0;
+            lineOpacity = 0;
 
-			//check whether distance between mouse and line is within range
-			if (distanceVerifier(midX, midY, cursorX, cursorY, mouseFalloff)) {
-				lineOpacity = 1;
-				if (opacityFalloff) {
-					lineOpacity = (mouseFalloff - Math.abs(midX - cursorX) + mouseFalloff - (Math.abs(midY - cursorY))) / falloffAmount;
-				}
-			}
-			//set stroke color
-			lineRGB = "rgba(" + lineRed + ", " + lineGreen + ", " + lineBlue + ", " + lineOpacity + ")";
-		}
+            //check whether distance between mouse and line is within range
+            if (distanceVerifier(midX, midY, cursorX, cursorY, mouseFalloff)) {
+                lineOpacity = 1;
+                if (opacityFalloff) {
+                    lineOpacity = (mouseFalloff - Math.abs(midX - cursorX) + mouseFalloff - (Math.abs(midY - cursorY))) / falloffAmount;
+                }
+            }
+            //set stroke color
+            lineRGB = "rgba(" + lineRed + ", " + lineGreen + ", " + lineBlue + ", " + lineOpacity + ")";
+        }
 
-		//draw line
-		ctx.strokeStyle = lineRGB;
-		ctx.stroke();
-	}
+        //draw line
+        ctx.strokeStyle = lineRGB;
+        ctx.stroke();
+    }
 }
 
 //////////////////////////////////////////// ANIMATION
@@ -188,54 +188,54 @@ function Line(lineX1, lineY1, lineX2, lineY2) {
 //animation setup
 function setup() {
 
-	//fit canvas to container, ready to draw
-	fitToContainer();
+    //fit canvas to container, ready to draw
+    fitToContainer();
 
-	//fill points array with dot objects
-	for (var i = 0; i < dotCount; i++) {
-		points[i] = new Dot();
-	}
+    //fill points array with dot objects
+    for (var i = 0; i < dotCount; i++) {
+        points[i] = new Dot();
+    }
 
-	//call draw function to start animation loop
-	window.requestAnimationFrame(draw);
+    //call draw function to start animation loop
+    window.requestAnimationFrame(draw);
 }
 
 //animation loop
 function draw() {
 
-	//fit canvas to container
-	fitToContainer();
+    //fit canvas to container
+    fitToContainer();
 
-	//get mouse position on mouse move
-	document.onmousemove = function (event) {
-		cursorX = event.pageX;
-		cursorY = event.pageY;
-	}
+    //get mouse position on mouse move
+    document.onmousemove = function (event) {
+        cursorX = event.pageX;
+        cursorY = event.pageY;
+    }
 
-	//clear canvas for next frame
-	ctx.clearRect(0, 0, canvas.width, canvas.height);
+    //clear canvas for next frame
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-	//check distances between all points and draw lines if dots are closer than lineDistance
-	for (i = 0; i < dotCount; i++) {
-		for (j = i + 1; j < dotCount; j++) {
-			if (distanceVerifier(points[i].dotX, points[i].dotY, points[j].dotX, points[j].dotY, lineDistance)) {
-				var straight = new Line(points[i].dotX, points[i].dotY, points[j].dotX, points[j].dotY);
-				straight.drawLine();
-			}
-		}
-	}
+    //check distances between all points and draw lines if dots are closer than lineDistance
+    for (i = 0; i < dotCount; i++) {
+        for (j = i + 1; j < dotCount; j++) {
+            if (distanceVerifier(points[i].dotX, points[i].dotY, points[j].dotX, points[j].dotY, lineDistance)) {
+                var straight = new Line(points[i].dotX, points[i].dotY, points[j].dotX, points[j].dotY);
+                straight.drawLine();
+            }
+        }
+    }
 
-	//draw dots
-	for (i = 0; i < dotCount; i++) {
-		points[i].moveDot();
-		points[i].drawDot();
-	}
+    //draw dots
+    for (i = 0; i < dotCount; i++) {
+        points[i].moveDot();
+        points[i].drawDot();
+    }
 
-	//loop animation
-	window.requestAnimationFrame(draw);
+    //loop animation
+    window.requestAnimationFrame(draw);
 }
 
 //on page load, call setup to start animation
 window.addEventListener("DOMContentLoaded", function () {
-	setup();
+    setup();
 });
