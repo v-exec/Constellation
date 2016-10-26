@@ -5,6 +5,8 @@ _Constellation-JS_ is a dynamic, interactive visual 'mesh' graphic done purely i
 
 ![gif] (http://i.imgur.com/q5znRfO.gif)
 
+[LIVE DEMO] (https://vi-victor.github.io/Constellation-JS/)
+
 Nearly all elements of the graphic are parameterized, and easily modifiable.
 
 ## Installation
@@ -119,5 +121,4 @@ If you wish to modify the scripts themselves, take a look at the `/scripts` fold
 
 ## To Do
 
-* Make live demo page
 * Make ConstellationJS into a class, so that multiple instances can be deployed on multiple canvases (maaaaaybe)
