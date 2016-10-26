@@ -121,4 +121,5 @@ If you wish to modify the scripts themselves, take a look at the `/scripts` fold
 
 ## To Do
 
+* Add mobile support
 * Make ConstellationJS into a class, so that multiple instances can be deployed on multiple canvases (maaaaaybe)
