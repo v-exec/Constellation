@@ -1,5 +1,5 @@
 # Constellation-JS
-#### Version 1.1.1
+#### Version 1.1.2
 
 _Constellation-JS_ is a dynamic, interactive visual 'mesh' graphic done purely in JavaScript.
 
@@ -23,7 +23,7 @@ Feel free to exclude any parameters whose value you do not wish to modify.
 	//creates reference to html canvas
 	//put your canvas' ID where 'userCanvas' is
 	canvas = document.getElementById('userCanvas');
-	
+
 	//number of dots
 	dotCount = 300;
 
@@ -38,14 +38,16 @@ Feel free to exclude any parameters whose value you do not wish to modify.
 	interactive = true;
 
 	//distance from the mouse at which lines will stop being visible 
-	mouseFalloff = 140;
+	mouseFalloff = 150;
 
 	//whether or not there is a smooth opacity falloff as drawn lines get further from mouse 
 	opacityFalloff = true;
 
 	//amount of opacity falloff (the higher the number, the less opaque things will be when further from the mouse)
-	//should be bigger or equal to 2x mouseFalloff, otherwise it yields an opacity value out of 0-1 range
-	falloffAmount = mouseFalloff * 2;
+	//at mouseFalloff * 1, the lines nearest to the mouse will reach an opacity value of exactly 1
+	//anything bigger never allows lines nearest to the mouse reach full opacity
+	//anything smaller creates a larger circle of full opacity lines near the mouse
+	falloffAmount = mouseFalloff * 1;
 
 	//-------------COLORS-------------//
 
@@ -91,6 +93,12 @@ The canvas will be automatically sized to its parent's size.
 If you wish to modify the scripts themselves, take a look at the `/scripts` folder.
 
 ## Changelog
+
+### Version 1.1.2
+
+* Clarified and added additional documentation for falloffAmount
+* Reworked equation for calculating distance between two points
+* Simplified opacityFalloff equation using new point distance calculation
 
 ### Version 1.1.1
 

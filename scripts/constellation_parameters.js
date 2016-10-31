@@ -18,14 +18,16 @@ var lineDistance = 120;
 var interactive = true;
 
 //distance from the mouse at which lines will stop being visible 
-var mouseFalloff = 140;
+var mouseFalloff = 150;
 
 //whether or not there is a smooth opacity falloff as drawn lines get further from mouse 
 var opacityFalloff = true;
 
 //amount of opacity falloff (the higher the number, the less opaque things will be when further from the mouse)
-//should be bigger or equal to 2x mouseFalloff, otherwise it yelds opacity value out of 0-1 range
-var falloffAmount = mouseFalloff * 2;
+//at mouseFalloff * 1, the lines nearest to the mouse will reach an opacity value of exactly 1
+//anything bigger never allows lines nearest to the mouse reach full opacity
+//anything smaller creates a larger circle of full opacity lines near the mouse
+var falloffAmount = mouseFalloff * 1;
 
 //-------------COLORS-------------//
 

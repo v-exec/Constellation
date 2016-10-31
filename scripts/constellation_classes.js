@@ -8,7 +8,7 @@ function Dot() {
 	this.dotR = getRandomFloat(dotSizeMin, dotSizeMax);
 
 	//method to update dot position
-	this.moveDot = function () {
+	this.moveDot = function() {
 		this.dotX += this.dotVX;
 		this.dotY += this.dotVY;
 
@@ -23,7 +23,7 @@ function Dot() {
 	}
 
 	//method to draw dot
-	this.drawDot = function () {
+	this.drawDot = function() {
 		ctx.beginPath();
 		ctx.arc(this.dotX, this.dotY, this.dotR, 0, Math.PI * 2, true);
 		ctx.closePath();
@@ -41,7 +41,7 @@ function Line(lineX1, lineY1, lineX2, lineY2) {
 	this.lineY2 = lineY2;
 
 	//method to calculate line position and draw line
-	this.drawLine = function () {
+	this.drawLine = function() {
 		ctx.beginPath();
 		ctx.moveTo(this.lineX1, this.lineY1);
 		ctx.lineTo(this.lineX2, this.lineY2);
@@ -57,10 +57,10 @@ function Line(lineX1, lineY1, lineX2, lineY2) {
 			lineOpacity = 0;
 
 			//check whether distance between mouse and line is within range
-			if (distanceVerifier(midX, midY, cursorX, cursorY, mouseFalloff)) {
+			if (calculateDistance(midX, midY, cursorX, cursorY) < mouseFalloff) {
 				lineOpacity = 1;
 				if (opacityFalloff) {
-					lineOpacity = (mouseFalloff - Math.abs(midX - cursorX) + mouseFalloff - (Math.abs(midY - cursorY))) / falloffAmount;
+					lineOpacity = (mouseFalloff - calculateDistance(midX, midY, cursorX, cursorY)) / falloffAmount;
 				}
 			}
 			//set stroke color

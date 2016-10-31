@@ -13,7 +13,7 @@ var lineRGB = "rgba(" + lineRed + ", " + lineGreen + ", " + lineBlue + ", " + li
 var dotRGB = "rgba(" + dotRed + ", " + dotGreen + ", " + dotBlue + ", " + dotOpacity + ")";
 
 //set canvas background color
-canvas.style.background = "rgba(" + bgRed + ", " + bgGreen + ", " + bgBlue + ", " + bgOpacity + ")";;
+canvas.style.background = "rgba(" + bgRed + ", " + bgGreen + ", " + bgBlue + ", " + bgOpacity + ")";
 
 //animation setup
 function setup() {
@@ -48,7 +48,7 @@ function draw() {
 	//check distances between all points and draw lines if dots are closer than lineDistance
 	for (i = 0; i < dotCount; i++) {
 		for (j = i + 1; j < dotCount; j++) {
-			if (distanceVerifier(points[i].dotX, points[i].dotY, points[j].dotX, points[j].dotY, lineDistance)) {
+			if (calculateDistance(points[i].dotX, points[i].dotY, points[j].dotX, points[j].dotY) < lineDistance) {
 				var straight = new Line(points[i].dotX, points[i].dotY, points[j].dotX, points[j].dotY);
 				straight.drawLine();
 			}

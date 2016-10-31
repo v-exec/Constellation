@@ -47,14 +47,16 @@
 		interactive = true;
 
 		//distance from the mouse at which lines will stop being visible 
-		mouseFalloff = 140;
+		mouseFalloff = 150;
 
 		//whether or not there is a smooth opacity falloff as drawn lines get further from mouse 
 		opacityFalloff = true;
 
 		//amount of opacity falloff (the higher the number, the less opaque things will be when further from the mouse)
-		//should be bigger or equal to 2x mouseFalloff, otherwise it yelds opacity value out of 0-1 range
-		falloffAmount = mouseFalloff * 2;
+		//at mouseFalloff * 1, the lines nearest to the mouse will reach an opacity value of exactly 1
+		//anything bigger never allows lines nearest to the mouse reach full opacity
+		//anything smaller creates a larger circle of full opacity lines near the mouse
+		falloffAmount = mouseFalloff * 1;
 
 		//-------------COLORS-------------//
 
@@ -72,8 +74,11 @@
 		//line opacity is automatically overwritten if interactive = true
 		lineOpacity = 0.7;
 
-		//HEX for canvas background color
-		backgroundColor = "#fff";
+		//RGBA canvas background (takes values between 0 and 255 for RGB, and between 0 and 1 for alpha)
+		bgRed = 255;
+		bgGreen = 255;
+		bgBlue = 255;
+		bgOpacity = 1;
 
 		//-------------SIZES-------------//
 

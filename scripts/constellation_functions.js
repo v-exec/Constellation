@@ -11,7 +11,7 @@ function getRandomFloat(min, max) {
 	return Math.random() * (max - min) + min;
 }
 
-//check if distance between two coordinates is closer than distanceComparator
-function distanceVerifier(dot1X, dot1Y, dot2X, dot2Y, distanceComparator) {
-	return ((Math.abs(dot1X - dot2X) < distanceComparator) && (Math.abs(dot1Y - dot2Y) < distanceComparator));
+//calculates distance between two coordinates
+function calculateDistance(point1X, point1Y, point2X, point2Y) {
+	return Math.sqrt((point1X - point2X)*(point1X - point2X) + (point1Y - point2Y)*(point1Y - point2Y));
 }
