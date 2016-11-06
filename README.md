@@ -92,42 +92,8 @@ The canvas will be automatically sized to its parent's size.
 
 If you wish to modify the scripts themselves, take a look at the `/scripts` folder.
 
-## Changelog
-
-### Version 1.1.2
-
-* Clarified and added additional documentation for falloffAmount
-* Reworked equation for calculating distance between two points
-* Simplified opacityFalloff equation using new point distance calculation
-
-### Version 1.1.1
-
-* Changed canvas background color parameters to accept RGB
-* Added parameter for setting on which canvas constellation displays on
-* Added documentation
-* Added a non-minified version of the module in `/module` folder
-
-### Version 1.1
-
-* Reworked file organization
-* Simplified setup
-* Optimized animation loop and setup
-* Renamed functions, variables, and files, for clarity
-* Added and modified commentary for clarity
-* Removed unnecessary/test code
-* Remade minified Constellation-JS module
-* Made dot and line classes more modular
-* Added smooth falloff range for line opacity in interactive mode
-* Fixed incorrect coordinate calculations for line opacity falloff
-* Optimized line opacity falloff calculation logic
-* Added parameters for the following:
-	* dot and line colors and opacity
-	* dot and line sizes
-	* line opacity falloff range and intensity
-	* dot movement speed
-	* canvas background color
-
 ## To Do
 
 * Add mobile support
+* Wrap it up
 * Make ConstellationJS into a class, so that multiple instances can be deployed on multiple canvases (maaaaaybe)
