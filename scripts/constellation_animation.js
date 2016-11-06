@@ -1,20 +1,3 @@
-//references to html elements
-var ctx = canvas.getContext('2d');
-
-//global variables for cursor location
-var cursorX;
-var cursorY;
-
-//array preparation for dot objects
-var points = new Array(dotCount);
-
-//color preparation for objects
-var lineRGB = "rgba(" + lineRed + ", " + lineGreen + ", " + lineBlue + ", " + lineOpacity + ")";
-var dotRGB = "rgba(" + dotRed + ", " + dotGreen + ", " + dotBlue + ", " + dotOpacity + ")";
-
-//set canvas background color
-canvas.style.background = "rgba(" + bgRed + ", " + bgGreen + ", " + bgBlue + ", " + bgOpacity + ")";
-
 //animation setup
 function setup() {
 
@@ -22,8 +5,8 @@ function setup() {
 	fitToContainer();
 
 	//fill points array with dot objects
-	for (var i = 0; i < dotCount; i++) {
-		points[i] = new Dot();
+	for (var i = 0; i < Const.dotCount; i++) {
+		Const.points[i] = new Dot();
 	}
 
 	//call draw function to start animation loop
@@ -38,27 +21,30 @@ function draw() {
 
 	//get mouse position on mouse move
 	document.onmousemove = function (event) {
-		cursorX = event.pageX;
-		cursorY = event.pageY;
+		Const.cursorX = event.pageX;
+		Const.cursorY = event.pageY;
 	}
 
 	//clear canvas for next frame
-	ctx.clearRect(0, 0, canvas.width, canvas.height);
+	Const.ctx.clearRect(0, 0, Const.canvas.width, Const.canvas.height);
+
+	//move dots before drawing lines, to make sure lines are aligned when rendering dots
+	for (i = 0; i < Const.dotCount; i++) {
+		Const.points[i].moveDot();
+	}
 
 	//check distances between all points and draw lines if dots are closer than lineDistance
-	for (i = 0; i < dotCount; i++) {
-		for (j = i + 1; j < dotCount; j++) {
-			if (calculateDistance(points[i].dotX, points[i].dotY, points[j].dotX, points[j].dotY) < lineDistance) {
-				var straight = new Line(points[i].dotX, points[i].dotY, points[j].dotX, points[j].dotY);
-				straight.drawLine();
+	for (i = 0; i < Const.dotCount; i++) {
+		for (j = i + 1; j < Const.dotCount; j++) {
+			if (calculateDistance(Const.points[i].dotX, Const.points[i].dotY,Const.points[j].dotX, Const.points[j].dotY) < Const.lineDistance) {
+				drawLine(Const.points[i].dotX, Const.points[i].dotY, Const.points[j].dotX, Const.points[j].dotY);
 			}
 		}
 	}
 
-	//draw dots
-	for (i = 0; i < dotCount; i++) {
-		points[i].moveDot();
-		points[i].drawDot();
+	//draw dots after lines so that lines aren't rendered above dots
+	for (i = 0; i < Const.dotCount; i++) {
+		Const.points[i].drawDot();
 	}
 
 	//loop animation
