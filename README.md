@@ -97,4 +97,3 @@ If you want access to each of the scripts themselves, take a look at the `/scrip
 ## To Do
 
 * Add mobile support
-* Make ConstellationJS into a class, so that multiple instances can be deployed on multiple canvases (maaaaaybe)
