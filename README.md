@@ -1,9 +1,8 @@
 # Constellation-JS
-#### Version 1.2
 
 _Constellation-JS_ is a dynamic, interactive visual 'mesh' graphic done purely in JavaScript.
 
-[Live demo and additional information found here.] (http://v-os.ca/constellation)
+[LIVE DEMO](http://v-os.ca/constellation)
 
 Nearly all elements of the graphic are parameterized, and easily modifiable.
 
@@ -88,4 +87,10 @@ Feel free to exclude any parameters whose value you do not wish to modify.
 ```
 
 The canvas will be automatically sized to its parent's size.
-It's all wrapped in an object, so you can freely use identical variable names outside of Constellation's code.
+It's all wrapped in an object, so you can freely use identical variable names outside of Constellation's code
+
+If you want access to each of the scripts themselves, take a look at the `/scripts` folder.
+
+## To Do
+
+* Add mobile support
