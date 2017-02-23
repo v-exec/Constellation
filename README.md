@@ -2,16 +2,18 @@
 
 _Constellation-JS_ is a dynamic, interactive visual 'mesh' graphic done purely in JavaScript.
 
-[Live demo and additional information found here.](http://v-os.ca/constellation)
+[Live demo found here.](http://v-os.ca/constellation)
 
 Nearly all elements of the graphic are parameterized, and easily modifiable.
 
 ## Installation
 
-1. Find `constellationpack.js` in `/module`, and link it in your html.
-2. To edit its parameters, add the `<script>` tag found below in your html to overwrite their default values.
+`constellation.js` in `/module` acts as the condensed file.
 
+For parameter control, add the `<script>` tag (seen below) in your html to overwrite parameters' default values.
 Feel free to exclude any parameters whose value you do not wish to modify.
+
+The canvas will be automatically resized to its parent's size.
 
 ```javascript
 <script>
@@ -85,8 +87,3 @@ Feel free to exclude any parameters whose value you do not wish to modify.
 	Const.dotSpeed = 0.2;
 </script>
 ```
-
-The canvas will be automatically sized to its parent's size.
-It's all wrapped in an object, so you can freely use identical variable names outside of Constellation's code
-
-If you want access to each of the scripts themselves, take a look at the `/scripts` folder.
