@@ -1,6 +1,6 @@
-# Constellation-JS
+# Constellation
 
-_Constellation-JS_ is a dynamic, interactive visual 'mesh' graphic done purely in JavaScript.
+_Constellation_ is a dynamic, interactive visual 'mesh' graphic done purely in JavaScript.
 
 [Live demo found here.](http://v-os.ca/constellation)
 
