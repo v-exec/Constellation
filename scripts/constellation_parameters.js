@@ -1,9 +1,9 @@
-//   ______     ______     __   __     ______     ______   ______     __         __         ______     ______   __     ______     __   __          __     ______    
-//  /\  ___\   /\  __ \   /\ "-.\ \   /\  ___\   /\__  _\ /\  ___\   /\ \       /\ \       /\  __ \   /\__  _\ /\ \   /\  __ \   /\ "-.\ \        /\ \   /\  ___\   
-//  \ \ \____  \ \ \/\ \  \ \ \-.  \  \ \___  \  \/_/\ \/ \ \  __\   \ \ \____  \ \ \____  \ \  __ \  \/_/\ \/ \ \ \  \ \ \/\ \  \ \ \-.  \      _\_\ \  \ \___  \  
-//   \ \_____\  \ \_____\  \ \_\\"\_\  \/\_____\    \ \_\  \ \_____\  \ \_____\  \ \_____\  \ \_\ \_\    \ \_\  \ \_\  \ \_____\  \ \_\\"\_\    /\_____\  \/\_____\ 
-//    \/_____/   \/_____/   \/_/ \/_/   \/_____/     \/_/   \/_____/   \/_____/   \/_____/   \/_/\/_/     \/_/   \/_/   \/_____/   \/_/ \/_/    \/_____/   \/_____/ 
-//                                                                                                                                                                  
+//   ______     ______     __   __     ______     ______   ______     __         __         ______     ______   __     ______     __   __   
+//  /\  ___\   /\  __ \   /\ "-.\ \   /\  ___\   /\__  _\ /\  ___\   /\ \       /\ \       /\  __ \   /\__  _\ /\ \   /\  __ \   /\ "-.\ \  
+//  \ \ \____  \ \ \/\ \  \ \ \-.  \  \ \___  \  \/_/\ \/ \ \  __\   \ \ \____  \ \ \____  \ \  __ \  \/_/\ \/ \ \ \  \ \ \/\ \  \ \ \-.  \ 
+//   \ \_____\  \ \_____\  \ \_\\"\_\  \/\_____\    \ \_\  \ \_____\  \ \_____\  \ \_____\  \ \_\ \_\    \ \_\  \ \_\  \ \_____\  \ \_\\"\_\
+//    \/_____/   \/_____/   \/_/ \/_/   \/_____/     \/_/   \/_____/   \/_____/   \/_____/   \/_/\/_/     \/_/   \/_/   \/_____/   \/_/ \/_/
+//                                                                                                                                          
 
 var Const = {};
 
@@ -17,7 +17,7 @@ Const.canvas = document.getElementById('userCanvas');
 Const.dotCount = 300;
 
 //minimum distance between dots necessary to draw a line connecting them
-Const.lineDistance = 120;
+Const.lineDistance = 140;
 
 //-------------INTERACTION-------------//
 
@@ -41,32 +41,32 @@ Const.falloffAmount = Const.mouseFalloff * 1;
 //-------------COLORS-------------//
 
 //RGBA for dots (takes values between 0 and 255 for RGB, and between 0 and 1 for alpha)
-Const.dotRed = 100;
-Const.dotGreen = 100;
-Const.dotBlue = 100;
-Const.dotOpacity = 0.9;
+Const.dotRed = 255;
+Const.dotGreen = 255;
+Const.dotBlue = 255;
+Const.dotOpacity = 1;
 
 //RGBA for lines (takes values between 0 and 255 for RGB, and between 0 and 1 for alpha)
-Const.lineRed = 100;
-Const.lineGreen = 100;
-Const.lineBlue = 200;
+Const.lineRed = 255;
+Const.lineGreen = 255;
+Const.lineBlue = 255;
 
 //line opacity is automatically overwritten if interactive = true
 Const.lineOpacity = 0.7;
 
 //RGBA canvas background (takes values between 0 and 255 for RGB, and between 0 and 1 for alpha)
-Const.bgRed = 255;
-Const.bgGreen = 255;
-Const.bgBlue = 255;
+Const.bgRed = 0;
+Const.bgGreen = 0;
+Const.bgBlue = 0;
 Const.bgOpacity = 1;
 
 //-------------SIZES-------------//
 
 //minimum possible size of a dot
-Const.dotSizeMin = 1;
+Const.dotSizeMin = 0.4;
 
 //maximum possible size of a dot
-Const.dotSizeMax = 2.6;
+Const.dotSizeMax = 1.4;
 
 //thickness of lines
 Const.lineSize = 0.7;
@@ -76,7 +76,7 @@ Const.lineSize = 0.7;
 //speed range of dots
 Const.dotSpeed = 0.2;
 
-//-------------NO TOUCH UNLESS YOU KNOW WHAT YOU'RE DOING-------------//
+//-------------LINKS AND GLOBALS-------------//
 
 //canvas context setup
 Const.ctx = Const.canvas.getContext('2d');
