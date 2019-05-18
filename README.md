@@ -2,7 +2,7 @@
 
 _Constellation_ is a dynamic, interactive visual 'mesh' graphic done purely in JavaScript.
 
-[Live demo found here.](https://v-exec.github.io/Constellation/)
+[Live demo found here.](http://exp.v-os.ca/constellation)
 
 `constellation.js` in `/module` acts as the condensed file.
 
